@@ -64,7 +64,8 @@ public class TimeTableController {
                 model.addAttribute("groupId", session.getAttribute("gId"));
                 model.addAttribute("currentLesson", session.getAttribute("cLesson"));
                 model.addAttribute("timeTableId", session.getAttribute("ttId"));
-                model.addAttribute("timeTableData", session.getAttribute("tableData"));
+                List<TimeTableProjection> timeTableData = timeTableRepo.getTimeTableData((Integer) session.getAttribute("ttid"));
+                model.addAttribute("timeTableData",timeTableData);
                 model.addAttribute("groups", groups);
                 return "timeTable/timeTable";
             }
