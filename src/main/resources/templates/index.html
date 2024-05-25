@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body >
+<header class="bg-light border-bottom py-2">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <a href="/" class="navbar-brand">ua. Academey</a>
+            <nav>
+                <a sec:authorize="isAnonymous" href="login.html" class="btn btn-outline-primary mr-2">Login</a>
+                <a sec:authorize="hasRole('ADMIN')" href="/admin" class="btn btn-primary">ADMIN</a>
+                <a sec:authorize="hasRole('STUDENT')" href="/student" class="btn btn-primary">STUDENT</a>
+            </nav>
+        </div>
+    </div>
+</header>
+</body>
+</html>

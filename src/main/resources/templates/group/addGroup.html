@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: lightslategray">
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card m-6" style="width: 20rem; background-color: darkslategrey; color: white;">
+<!--                <div class="card-header">-->
+<!--                    <h4 class="card-title mb-0">Add Group</h4>-->
+<!--                </div>-->
+                <div class="card-body">
+                    <div>
+                        <h2 style="background-color: darkslategray; color: white" class="card-title text-center">Add Group</h2>
+                    </div>
+                    <form th:action="${group==null?'/admin/group/add':'/admin/group/edit'}" method="post" >
+                        <div class="form-group">
+                            <label th:text="${group==null?'Add Group':'Edit Group'}" for="groupName"></label>
+                            <input type="text" class="form-control" name="name" id="groupName" placeholder="Enter group name" th:value="${group==null?'':group.getName()}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: lightslategray">
+
+<!--<div class="row">-->
+<!--    <div class="col-3 border-end p-4">-->
+<!--        <ul class="list-group">-->
+<!--            <a class="btn" href="admin">-->
+<!--                <li class="list-group-item bg-dark text-white">Admin</li>-->
+<!--            </a>-->
+<!--            <a class="btn" href="/admin/student">-->
+<!--                <li class=" list-group-item">Student</li>-->
+<!--            </a>-->
+<!--            <a class="btn" href="/admin/payment"> <li class=" list-group-item ">Payment</li></a>-->
+
+<!--        </ul>-->
+<!--    </div>-->
+<!--    <div class="col-9">-->
+<!--        <div class="row">-->
+<!--            <div class="col-2 p-3">-->
+<!--                <a href="/static" class="btn btn-warning"> Back to Menu</a>-->
+<!--            </div>-->
+<!--            <div class="col-2 offset-8 p-3">-->
+<!--                <a href="/admin/group/add" class="btn btn-success"> Add Group</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="container ">-->
+<!--            <table class="table table-striped" >-->
+<!--                <thead class="thead-dark ">-->
+<!--                <tr>-->
+<!--                    <th>ID</th>-->
+<!--                    <th>Name</th>-->
+<!--                    <th ></th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr th:each="group: ${groups}">-->
+<!--                    <td th:text="${group.getId()}"></td>-->
+<!--                    <td th:text="${group.getName()}"></td>-->
+<!--                    <td class="text-end">-->
+<!--                        <a th:href="'/admin/group/edit/' + ${group.id}" class="btn btn-info">edit</a>-->
+<!--                        <a th:href="'/admin/group/delete/'+ ${group.id}" class="btn btn-danger">Delete</a>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-3 border-end p-4" >
+            <ul class="list-group" >
+                <a class="btn" href="/admin">
+                    <li class="list-group-item  ">Admin</li>
+                </a>
+                <a class="btn" href="/admin/student">
+                    <li class=" list-group-item">Student</li>
+                </a>
+                <a class="btn" href="/admin/payment"> <li class=" list-group-item ">Payment</li></a>
+                <a class="btn" href="/timetable"> <li class=" list-group-item ">Timetable</li></a>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Group List</h4>
+                </div>
+                <div class="card-body text-white" style="background-color: darkslategrey">
+                            <div class="mx-1">
+                                <a href="/admin/group/add" class="btn btn-success m-2" style="background-color: darkblue; color: white"> Add Group</a>
+                            </div>
+                    <div class="container ">
+                        <table class="table table-striped" style="background-color: lightslategray; color: darkslategrey">
+                            <thead class="thead-dark ">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th> Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="group : ${groups}">
+                                <td th:text="${group.id}"></td>
+                                <td th:text="${group.name}"></td>
+                                <td class="text-end">
+                                    <a th:href="'/admin/group/edit/' + ${group.id}" class="btn btn-info">edit</a>
+                                    <a th:href="'/admin/group/delete/'+ ${group.id}" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body style="background-color: lightslategray">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6" >
+            <div class="card m-6" style="width: 30rem; background-color: darkslategrey; color: white;">
+                <!--                <div class="card-header">-->
+                <!--                    <h4 class="card-title mb-0">Add Group</h4>-->
+                <!--                </div>-->
+                <div class="card-body">
+                    <form th:action="${student==null?'/admin/student/add':'/admin/student/edit'}" method="post" >
+                        <div>
+                            <h2 style="background-color: darkslategray; color: white" class="card-title text-center">Add Student</h2>
+                        </div>
+                        <div class="form-group" >
+                            <label th:text="${student==null?'Add Student':'Edit Stundet'}" ></label>
+                            <input type="text" class="form-control m-1" name="firstName" id="studentFName" placeholder="Enter first name" th:value="${student==null?'':student.firstName}">
+                            <input type="text" class="form-control m-1" name="lastName" id="studentLName" placeholder="Enter last name" th:value="${student==null?'':student.lastName}">
+                            <input type="text" class="form-control m-1" name="phoneNumber" id="studentPhone" placeholder="Enter phone " th:value="${student==null?'':student.phoneNumber}">
+                            <input type="text" class="form-control m-1" name="password" id="studentPassword" placeholder="Enter password " th:value="${student==null?'':student.password}">
+                        </div>
+                        <button type="submit" class="btn btn-primary mx-2">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

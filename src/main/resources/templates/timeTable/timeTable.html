@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .grey-background {
+            background-color: lightslategray;
+            color: gray;
+            border: none;
+            padding: 3px 3px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+
+        .green-button {
+            background-color: forestgreen;
+            color: gray;
+            border: none;
+            padding: 20px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 25px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+
+        .red-button {
+            background-color : firebrick;
+            color: gray;
+            border: none;
+            padding: 20px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+        .grey-button {
+            background-color : lightslategray;
+            color: white;
+            border: none;
+            padding: 20px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+    </style>
+
+</head>
+<body style="background-color: lightslategray">
+
+<!--    <div class="card">-->
+<!--        <div class="row">-->
+<!--            <div class="col-2" th:each="group:${groups}">-->
+<!--                <a class="btn btn-dark text-white px-5" th:href="|?groupId=${group.id}|" th:text="${group.name}"></a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <table class="table table-striped" style="background-color: lightslategray; color: darkslategrey">-->
+<!--        <thead class="thead-dark ">-->
+<!--        <tr>-->
+<!--            <th>-->
+<!--                <form >-->
+<!--                    <input type="hidden" name="groupId" th:value="${groupId}">-->
+<!--                    <div class="input-group">-->
+<!--                        <select class="form-control" name="timeTableId" required>-->
+<!--                            <option th:each="timetable : ${timetables}" th:value="${timetable.id}" th:text="${timetable.name}"></option>-->
+<!--                        </select>-->
+<!--                        <select class="form-control" name="currentLesson" required>-->
+<!--                            <option th:each="currentLesson:${#numbers.sequence(1,12)}" th:value="${currentLesson}" th:text="${currentLesson}"></option>-->
+<!--                        </select>-->
+<!--                        <button>ok</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </th>-->
+<!--            <th th:each="lesson:${lessons}" th:text="${lesson}"></th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="student : ${timeTableData}">-->
+<!--            <td th:text="${student.getFullName()}"></td>-->
+<!--            &lt;!&ndash;            <td th:each="attendance:${student.attendances}" th:text="${attendance}"></td>&ndash;&gt;-->
+
+<!--            <td th:each="attendance1:${student.attendances}" >-->
+<!--                <div>-->
+<!--                    <button th:class="${attendance1} ? 'green-button' : 'red-button'" text="">-->
+
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </td>-->
+
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+
+
+    <div class="container mt-5">
+        <div class=" border-end px-4 mx-5" >
+            <ul class="d-flex" >
+                <a class="btn" href="/admin">
+                    <li class="list-group-item  ">Admin</li>
+                </a>
+                <a class="btn" href="/admin/group">
+                    <li class=" list-group-item">Group</li>
+                </a>
+                <a class="btn" href="/admin/student">
+                    <li class=" list-group-item">Student</li>
+                </a>
+                <a class="btn" href="/admin/payment"> <li class=" list-group-item ">Payment</li></a>
+            </ul>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Timetable List</h4>
+                    </div>
+
+
+
+                    <div class="card-body text-white" style="background-color: darkslategrey">
+                        <div class="d-flex">
+                            <div class="mx-1">
+                                <a href="/timetable/new" class="btn btn-success m-2" style="background-color: darkblue; color: white"> Add Timetable</a>
+                            </div>
+                            <div class="mx-1">
+                                <a href="/timetable/newStudents" class="btn btn-success m-2" style="background-color: darkblue; color: white"> Add Students</a>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="card mx-3">
+                            <div class="row">
+                                <div class="col-2" th:each="group:${groups}">
+                                    <a class="btn btn-dark text-white px-5" th:href="|?groupId=${group.id}|" th:text="${group.name}"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="container ">
+                            <table class="table table-striped" style="background-color: honeydew; color: darkslategrey">
+                                <thead class="thead-dark ">
+                                <tr>
+                                    <th>
+                                        <form >
+                                            <input type="hidden" name="groupId" th:value="${groupId}">
+                                            <div class="input-group">
+                                                <select class="form-control" name="timeTableId" required>
+                                                    <option th:each="timetable : ${timetables}" th:value="${timetable.id}" th:text="${timetable.name}"></option>
+                                                </select>
+                                                <select class="form-control" name="currentLesson" required>
+                                                    <option th:each="ls,  l :${lessons}"  th:value="${l.count}" th:text="${ls}"></option>
+                                                </select>
+                                                <button>ok</button>
+                                            </div>
+                                        </form>
+                                    </th>
+                                    <th th:each="lesson:${lessons}" th:text="${lesson}"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="student, y : ${timeTableData}">
+                                    <td th:text="${student.getFullName()}" style="color: black"></td>
+                                    <!--            <td th:each="attendance:${student.attendances}" th:text="${attendance}"></td>-->
+                                        <td th:each="attendance1, i :${student.attendances}" >
+
+                                                <form action="/timetable/edit" method="post">
+                                                    <div>
+                                                        <input type="hidden" name="chosenStudentId" th:value="${student.id}">
+                                                        <input type="hidden" name="attendance" th:value="${attendance1}">
+                                                        <input type="hidden" name="currentL" th:value="${currentLesson}">
+                                                        <input type="hidden" name="column" th:value="${y.count}">
+                                                        <input type="hidden" name="row" th:value="${i.count}">
+                                                        <input type="hidden" name="rowSize" th:value="${i.size}">
+                                                        <div  th:class="${i.count==currentLesson} ? 'grey-background' : ''">
+                                                            <button th:class="${i.count<=currentLesson} ? ( ${attendance1} ? 'green-button' : 'red-button') : 'grey-button'" text=""></button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            <div th:if="${i.count!=currentLesson}">
+                                                <p style="background-color: red; color: darkred" th:text="${error}"></p>
+                                            </div>
+
+                                        </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

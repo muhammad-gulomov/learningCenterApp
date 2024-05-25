@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body style="background-color: lightslategray">
+
+
+<!--<form action="/admin/payment" method="get">-->
+<!--    <label for="startDate">Start Date:</label>-->
+<!--    <input type="text" id="startDate" placeholder="yyyy-MM-dd" name="startDate" >-->
+<!--    <label for="endDate">End Date:</label>-->
+<!--    <input type="text" id="endDate" placeholder="yyyy-MM-dd" name="endDate" >-->
+<!--    <button type="submit">Search</button>-->
+<!--</form>-->
+
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-3 border-end p-4" >
+            <ul class="list-group" >
+                <a class="btn" href="/admin">
+                    <li class="list-group-item  ">Admin</li>
+                </a>
+                <a class="btn" href="/admin/group">
+                    <li class=" list-group-item">Group</li>
+                </a>
+                <a class="btn" href="/admin/student"> <li class=" list-group-item ">Student</li></a>
+                <a class="btn" href="/timetable"> <li class=" list-group-item ">Timetable</li></a>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Payment List</h4>
+                </div>
+                <div class="card-body text-white" style="background-color: darkslategrey">
+                    <form class="mb-4" action="/admin/payment" method="get">
+                        <div class="input-group">
+                            <div>
+                                <label for="startDate">Start Date:</label>
+                                <input type="text" id="startDate" placeholder="yyyy-MM-dd" name="startDate" >
+                                <label for="endDate">End Date:</label>
+                                <input type="text" id="endDate" placeholder="yyyy-MM-dd" name="endDate" >
+                                <button style="background-color: darkblue; color: white" type="submit">Search</button>
+                            </div>
+                            <div th:if="${error}">
+                                <p style="background-color: red; color: darkred" th:text="${error}"></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="mx-1">
+                            <a href="/admin/payment/add" class="btn btn-success" style="background-color: darkblue; color: white"> Add Payment</a>
+                        </div>
+                    </form>
+                    <div class="container ">
+                        <table class="table table-striped" style="background-color: lightslategray; color: darkslategrey">
+                            <thead class="thead-dark ">
+                            <tr>
+                                <th>Student First Name</th>
+                                <th>Student Last Name</th>
+                                <th>Payment Type</th>
+                                <th>Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="payment : ${payments}">
+                                <td th:text="${payment.student.firstName}"></td>
+                                <td th:text="${payment.student.firstName}"></td>
+                                <td th:text="${payment.payType}"></td>
+                                <td th:text="${payment.date}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

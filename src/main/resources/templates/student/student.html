@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: lightslategray">
+<!--<div class="container mt-5">-->
+<!--    <div class="row">-->
+<!--        <div class="col-3 border-end p-4">-->
+<!--            <ul class="list-group" >-->
+<!--                <a class="btn" href="admin">-->
+<!--                    <li class="list-group-item bg-dark text-white">Admin</li>-->
+<!--                </a>-->
+<!--                <a class="btn" href="/admin/group">-->
+<!--                    <li class=" list-group-item">Group</li>-->
+<!--                </a>-->
+<!--                <a class="btn" href="/admin/payment"> <li class=" list-group-item ">Payment</li></a>-->
+
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="col-md-8">-->
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    <h4 class="card-title mb-0">Student List</h4>-->
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <form class="mb-4" action="/admin/student" method="get">-->
+<!--                        <div class="input-group">-->
+<!--                            <input type="text" class="form-control" name="search" id="search" placeholder="Search students">-->
+<!--                            <div class="input-group-append">-->
+<!--                                <button class="btn btn-primary" type="submit">Search</button>-->
+<!--                            </div>-->
+<!--                            <div class="mx-1">-->
+<!--                                <a href="/admin/student/add" class="btn btn-success"> Add Student</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                    <div class="container ">-->
+<!--                        <table class="table table-striped" >-->
+<!--                            <thead class="thead-dark ">-->
+<!--                            <tr>-->
+<!--                                <th>ID</th>-->
+<!--                                <th>First Name</th>-->
+<!--                                <th>Last Name</th>-->
+<!--                                <th>Phone Number</th>-->
+<!--                                <th ></th>-->
+<!--                            </tr>-->
+<!--                            </thead>-->
+<!--                            <tbody>-->
+<!--                            <tr th:each="student : ${students}">-->
+<!--                                <td th:text="${student.id}"></td>-->
+<!--                                <td th:text="${student.firstName}"></td>-->
+<!--                                <td th:text="${student.lastName}"></td>-->
+<!--                                <td th:text="${student.phoneNumber}"></td>-->
+<!--                                <td class="text-end">-->
+<!--                                    <a th:href="'/admin/student/edit/' + ${student.id}" class="btn btn-info">edit</a>-->
+<!--                                    <a th:href="'/admin/student/delete/'+ ${student.id}" class="btn btn-danger">Delete</a>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-3 border-end p-4" >
+            <ul class="list-group" >
+                <a class="btn" href="/admin">
+                    <li class="list-group-item  ">Admin</li>
+                </a>
+                <a class="btn" href="/admin/group">
+                    <li class=" list-group-item">Group</li>
+                </a>
+                <a class="btn" href="/admin/payment"> <li class=" list-group-item ">Payment</li></a>
+                <a class="btn" href="/timetable"> <li class=" list-group-item ">Timetable</li></a>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Student List</h4>
+                </div>
+                <div class="card-body text-white" style="background-color: darkslategrey">
+                    <form class="mb-4" action="/admin/student" method="get">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="search" id="search" placeholder="Search students">
+                            <div class="input-group-append">
+                                <button style="background-color: darkblue; color: white" class="btn btn-primary" type="submit">Search</button>
+                            </div>
+                            <div class="mx-1">
+                                <a href="/admin/student/add" class="btn btn-success" style="background-color: darkblue; color: white"> Add Student</a>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="container ">
+                        <table class="table table-striped" style="background-color: lightslategray; color: darkslategrey">
+                            <thead class="thead-dark ">
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Phone Number</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="student : ${students}">
+                                <td th:text="${student.id}"></td>
+                                <td th:text="${student.firstName}"></td>
+                                <td th:text="${student.lastName}"></td>
+                                <td th:text="${student.phoneNumber}"></td>
+                                <td class="text-end">
+                                    <a th:href="'/admin/student/edit/' + ${student.id}" class="btn btn-info">edit</a>
+                                    <a th:href="'/admin/student/delete/'+ ${student.id}" class="btn btn-danger">Delete</a>
+                                    <a th:href="'/admin/student/more/'+ ${student.id}" class="btn btn-danger" style="background-color: cornflowerblue">More</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

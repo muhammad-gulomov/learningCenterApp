@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card m-6" style="width: 20rem; background-color: darkslategrey; color: white;">
+                <!--                <div class="card-header">-->
+                <!--                    <h4 class="card-title mb-0">Add Group</h4>-->
+                <!--                </div>-->
+                <div class="card-body">
+                    <div>
+                        <h2 tyle="background-color: darkslategray; color: white" class="card-title text-center" th:text="${payment.id == null} ? 'Add Payment' : 'Edit Payment'"></h2>
+                    </div>
+                    <form th:action="${payment==null?'/admin/payment/add':'/admin/payment/edit'}" th:object="${payment}" method="post">
+                        <div class="form-group">
+                            <label for="name">Amount</label>
+                            <input type="text" class="form-control" id="name" th:field="*{amount}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="student">Student</label>
+                            <select class="form-control" id="student" th:field="*{student}" required>
+                                <option th:each="student : ${students}" name="studentId" th:value="${student.id}" th:text="${student.firstName}"></option>
+                            </select>
+                            <label for="payType">Payment Type</label>
+                            <select class="form-control" id="payType" th:field="*{payType}" required>
+                                <option th:each="payType : ${payTypes}" th:value="${payType.name()}" th:text="${payType.name()}"></option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a class="btn btn-secondary" th:href="@{/admin/payment}">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
